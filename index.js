@@ -11,7 +11,7 @@ puppeteer.use(StealthPlugin());
 // Default 1 minute
 moment.tz.setDefault("Asia/Singapore");
 // const currentMonthYear = moment().format("MMM/YYYY");
-const currentMonthYear = "Dec/2020";
+const currentMonthYear = "May/2020";
 const bookingSessions = [1, 2, 3, 4, 5, 6, 7];
 const refreshRate = 30000;
 
@@ -89,13 +89,15 @@ const refreshRate = 30000;
         // Just book the first one
         const slot = slots[0];
         // Element Parent
-        // const slotRow = (await slot.$x(".."))[0];
+        const slotRow = (await slot.$x(".."))[0];
 
-        await slot.click();
-        await mainFrame.click(submitButtonSelector);
-        await mainFrame.waitForSelector(confirmButtonSelector);
-        await mainFrame.click(confirmButtonSelector);
-        await mainFrame.waitForSelector("input[value='New Booking']");
+        console.log(slotRow);
+
+        // await slot.click();
+        // await mainFrame.click(submitButtonSelector);
+        // await mainFrame.waitForSelector(confirmButtonSelector);
+        // await mainFrame.click(confirmButtonSelector);
+        // await mainFrame.waitForSelector("input[value='New Booking']");
 
         process.exit(1);
       } else {
